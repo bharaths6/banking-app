@@ -1,0 +1,24 @@
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="deposit(form)">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <ion-col>
+            <h2>Acc# {{ data.accountNumber}}</h2>
+            <h4>Balance: {{ data.balance || 0 }}</h4>
+            <h4>Overdraft: {{ data.overdraft || 0 }}</h4>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-input name="deposit" type="text" placeholder="Enter amount to deposit" ngModel required></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-row>
+            <ion-button type="button" routerLink='/home' expand="block">Cancel</ion-button>
+            <ion-button type="submit" [disabled]="form.invalid" expand="block">Deposit</ion-button>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

@@ -1,0 +1,24 @@
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="withdraw(form)">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <ion-col>
+            <h2>Acc# {{ data.accountNumber}}</h2>
+            <h4>Balance: {{ data.balance}}</h4>
+            <h4>Overdraft: {{ data.overdraft}}</h4>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-input name="withdraw" type="text" placeholder="Enter amount to withdraw" ngModel required></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-row>
+            <ion-button type="button" routerLink='/home' expand="block">Cancel</ion-button>
+            <ion-button type="submit" [disabled]="form.invalid" expand="block">Withdraw</ion-button>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

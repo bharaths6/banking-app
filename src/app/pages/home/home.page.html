@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-fab vertical="top" horizontal="end" slot="fixed" (click)="createAccount()">
+	<ion-fab-button>
+	  <ion-icon name="add"></ion-icon>
+	</ion-fab-button>
+</ion-fab>
+
+<app-client-header
+	[name]="clientDetails.name"
+	[age]="clientDetails.age"
+>
+</app-client-header>
+
+<ion-content>
+<ion-icon slot="end" name="star"></ion-icon>
+	<app-account-details *ngFor="let accountDetails of  clientAccountDetails"
+		[accountNumber]="accountDetails.accountNumber"
+		[balance]="accountDetails.balance"
+		[overdraft]="accountDetails.overdraft"
+	>
+	</app-account-details>    
+</ion-content>
