@@ -33,8 +33,7 @@ export class AuthenticateService {
   }
 
   login(userInput): Observable<Auth> {
-    const payload = { email: 'bob@email.com', password: 'password', returnSecureToken : true };
-    // const payload = { ...userInput, returnSecureToken : true };
+    const payload = { ...userInput, returnSecureToken : true };
 
     return this.http.post(CONST.LOGIN_URL, payload)
     .pipe(map((res: Auth) => res));
