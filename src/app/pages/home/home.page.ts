@@ -50,7 +50,7 @@ export class HomePage implements OnInit{
 	const confirm = window.confirm(`Create new account as #${accNumber} ??`);
 	if (confirm) {
 		this.accountsService.addAccount(accNumber).subscribe((accounts)=> {
-			getAccountDetails(accounts);
+			this.getAccountDetails(accounts);
 		});
 	}
   }
