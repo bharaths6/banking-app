@@ -20,6 +20,7 @@ export class TokenInterceptor implements HttpInterceptor {
         public toastController: ToastController,
     ) { }
 
+    // Toast message to be invoked when error occurs
     async presentToast(msg) {
         const toast = await this.toastController.create({
         message: msg,
@@ -61,6 +62,8 @@ export class TokenInterceptor implements HttpInterceptor {
         );
     }
 
+    // common error handling function
+    // more login can be added here
     handleLoginErrResp(error) {
         this.presentToast(CONST.MESSAGES.LOGIN_FAIL);
     }

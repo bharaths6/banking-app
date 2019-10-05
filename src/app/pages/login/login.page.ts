@@ -18,6 +18,11 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * @summary Authenticates the client with the provided information
+   * @param formVal formdata value which hold the username and password
+   * @returns idToken, localId and other client data. Required informatin stored in session
+   */
   login(formVal) {
     this.authService.login(formVal.value).subscribe((data: Auth) => {
       this.authService.idToken = data.idToken;

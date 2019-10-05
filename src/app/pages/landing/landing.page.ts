@@ -15,9 +15,12 @@ export class LandingPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    // check session storage for saved id token
     if (this.auth.idToken) {
+      // navigate to home when id token is added in session
       this.navCtrl.navigateRoot('/home');
     } else {
+      // navigate to login when id token is not found
       this.navCtrl.navigateRoot('/login');
     }
   }

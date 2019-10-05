@@ -32,6 +32,10 @@ export class AuthenticateService {
     this.db.setItem(CONST.LOCAL_ID, token);
   }
 
+  /**
+   * @summary Builds payload and API for authenticating client details
+   * @param userInput inputs from client (username, password)
+   */
   login(userInput): Observable<Auth> {
     const payload = { ...userInput, returnSecureToken : true };
 

@@ -12,13 +12,13 @@ import { AccountsService } from 'src/app/services/accounts/accounts.service';
 export class DepositPage implements OnInit {
 
   data: any;
- 
+
   constructor(
-	private navCtrl: NavController,
-	private route: ActivatedRoute,
-	private router: Router,
-	private utils: UtilsService,
-	private accountsService: AccountsService,
+    private navCtrl: NavController,
+    private route: ActivatedRoute,
+    private router: Router,
+    private utils: UtilsService,
+    private accountsService: AccountsService,
   ) {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
@@ -29,18 +29,22 @@ export class DepositPage implements OnInit {
 
   ngOnInit() {
   }
-  
+
+  /**
+   * @summary Invoke the update account API to deposit amount entered by client
+   * @param form formData value for catching user inputs
+   */
   deposit(form) {
-	const depositAmt = parseFloat(form.value.deposit);
-	const balance = parseFloat(this.data.balance) || 0;
-	if (0 > depositAmt) {
-		this.utils.showError('Invalid Entry');
-	} else {
-		const accBalance = balance + depositAmt;
-		this.accountsService.updateAccountBalance(this.data.accountNumber, accBalance, this.data.overdraft).subscribe((res => {
-			this.navCtrl.navigateForward('/home');
-		}));	
-	}
+    const depositAmt = parseFloat(form.value.deposit);
+    const balance = parseFloat(this.data.balance) || 0;
+    if (0 > depositAmt) {
+      this.utils.showError('Invalid Entry');
+    } else {
+      const accBalance = balance + depositAmt;
+      this.accountsService.updateAccountBalance(this.data.accountNumber, accBalance, this.data.overdraft).subscribe((res => {
+        this.navCtrl.navigateForward('/home');
+      }));
+    }
   }
 
 }
